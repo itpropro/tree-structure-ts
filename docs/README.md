@@ -57,7 +57,7 @@ You can specify the traversal order by passing one of the following values to th
 - preOrder: visits the current node, then traverses the left subtree, then traverses the right subtree
 - postOrder: traverses the left subtree, then traverses the right subtree, then visits the current node
 
-for all avalaible methods and fields, please read the detailed documentation of the `Tree` and `TreeNode` class: [Class docs](modules.md).
+for all avalaible methods and fields, please read the detailed documentation of the `Tree` and `TreeNode` class: [Class docs](https://github.com/itpropro/tree-structure-ts/blob/main/docs/modules.md).
 
 ## Contribution
 
