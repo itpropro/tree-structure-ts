@@ -9,7 +9,7 @@
 
 ## Introduction
 
-This module help interacting with `Tree` structures. It is optimized to work with big trees without causing overflows. Therefore it doesn't use recursion and the implementations for `preOrder` and `postOrder` traversals use `Promise.all` for concurrency to traverse multiple nodes at ones.
+This module helps interacting with `Tree` structures in TypeScript. It is optimized to work with big trees without causing overflows. Therefore it doesn't use recursion and the implementations for `preOrder` and `postOrder` traversals use `Promise.all` for concurrency to traverse multiple nodes at ones.
 It is fully typed and has over 95% test coverage.
 
 🚀 Zero dependency<br>

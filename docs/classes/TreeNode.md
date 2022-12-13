@@ -56,7 +56,7 @@ Creates a new TreeNode instance.
 
 #### Defined in
 
-[TreeNode.ts:25](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L25)
+[TreeNode.ts:25](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L25)
 
 ## Properties
 
@@ -68,7 +68,7 @@ The children of the node.
 
 #### Defined in
 
-[TreeNode.ts:13](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L13)
+[TreeNode.ts:13](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L13)
 
 ___
 
@@ -80,7 +80,7 @@ The parent of the node.
 
 #### Defined in
 
-[TreeNode.ts:18](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L18)
+[TreeNode.ts:18](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L18)
 
 ___
 
@@ -92,7 +92,7 @@ The value of the node.
 
 #### Defined in
 
-[TreeNode.ts:8](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L8)
+[TreeNode.ts:8](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L8)
 
 ## Methods
 
@@ -116,7 +116,7 @@ The new child node.
 
 #### Defined in
 
-[TreeNode.ts:36](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L36)
+[TreeNode.ts:36](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L36)
 
 ___
 
@@ -134,7 +134,7 @@ An array of TreeNode instances.
 
 #### Defined in
 
-[TreeNode.ts:46](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L46)
+[TreeNode.ts:46](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L46)
 
 ___
 
@@ -152,7 +152,7 @@ An array of TreeNode instances.
 
 #### Defined in
 
-[TreeNode.ts:59](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L59)
+[TreeNode.ts:59](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L59)
 
 ___
 
@@ -170,7 +170,7 @@ Checks if the current node has any child nodes.
 
 #### Defined in
 
-[TreeNode.ts:75](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L75)
+[TreeNode.ts:75](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L75)
 
 ___
 
@@ -188,7 +188,7 @@ Checks if the current node has any siblings.
 
 #### Defined in
 
-[TreeNode.ts:83](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L83)
+[TreeNode.ts:83](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L83)
 
 ___
 
@@ -206,7 +206,7 @@ Checks if the current node is the root node.
 
 #### Defined in
 
-[TreeNode.ts:91](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L91)
+[TreeNode.ts:91](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L91)
 
 ___
 
@@ -224,7 +224,7 @@ The new current node after removing the current node.
 
 #### Defined in
 
-[TreeNode.ts:99](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L99)
+[TreeNode.ts:99](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L99)
 
 ___
 
@@ -247,4 +247,4 @@ Traverses the tree starting from the current node.
 
 #### Defined in
 
-[TreeNode.ts:119](https://github.com/itpropro/tree-structure-ts/blob/b519647/src/TreeNode.ts#L119)
+[TreeNode.ts:119](https://github.com/itpropro/tree-structure-ts/blob/d89204c/src/TreeNode.ts#L119)
