@@ -1,0 +1,40 @@
+name: Publish package
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          registry-url: "https://registry.npmjs.org"
+          cache: "pnpm"
+      - run: pnpm install
+      - name: Build
+        run: pnpm run build
+      - name: Run tests
+        run: pnpm run test
+      - name: Update package.json
+        shell: pwsh
+        run: |
+          $env:RELEASE_VERSION = $env:GITHUB_REF.split('/')[2]
+          echo "RELEASE_VERSION=$env:RELEASE_VERSION" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+          $content = Get-Content .\package.json
+          $content = $content | foreach-object { $_ -replace '(?<prefix>^.+"version": ")(.+)(?<suffix>",)$', "`${prefix}$env:RELEASE_VERSION`${suffix}" } 
+          $content | foreach-object { [System.Text.RegularExpressions.Regex]::Unescape($_) } |  Out-File .\package.json -Force -Encoding ascii
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "ci(package-json): :bookmark: Bumped package.json version to ${{ env.RELEASE_VERSION }}"
+          commit_user_email: jdamaschke@visorian.com
+          branch: main
+      - run: pnpm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

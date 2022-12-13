@@ -1,0 +1,27 @@
+{
+  "name": "@itpropro/tree-structure-ts",
+  "version": "0.3.0",
+  "type": "module",
+  "packageManager": "pnpm@7.18.1",
+  "scripts": {
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "bump": "changelogen --bump",
+    "publish": "pnpm publish",
+    "docs": "typedoc --plugin typedoc-plugin-markdown --entryDocument README.md --readme README.md --out docs --githubPages false src/index.ts"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config-ts": "^0.33.1",
+    "@typescript-eslint/eslint-plugin": "^5.45.1",
+    "@typescript-eslint/parser": "^5.45.1",
+    "@vitest/coverage-c8": "^0.25.8",
+    "changelogen": "^0.4.0",
+    "eslint": "^8.29.0",
+    "typedoc": "^0.23.21",
+    "typedoc-plugin-markdown": "^3.14.0",
+    "typescript": "^4.9.3",
+    "vitest": "^0.25.5"
+  }
+}
