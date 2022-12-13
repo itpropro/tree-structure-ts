@@ -47,7 +47,7 @@ Creates a new `Tree` instance.
 
 #### Defined in
 
-Tree.ts:16
+[Tree.ts:16](https://github.com/itpropro/tree-structure-ts/blob/5c909cf/src/Tree.ts#L16)
 
 ## Properties
 
@@ -59,7 +59,7 @@ The root node of the tree.
 
 #### Defined in
 
-Tree.ts:10
+[Tree.ts:10](https://github.com/itpropro/tree-structure-ts/blob/5c909cf/src/Tree.ts#L10)
 
 ## Methods
 
@@ -75,7 +75,7 @@ Returns all the nodes of the tree in an array.
 
 #### Defined in
 
-Tree.ts:70
+[Tree.ts:70](https://github.com/itpropro/tree-structure-ts/blob/5c909cf/src/Tree.ts#L70)
 
 ___
 
@@ -99,4 +99,4 @@ calling the provided callback function on each visited node.
 
 #### Defined in
 
-Tree.ts:27
+[Tree.ts:27](https://github.com/itpropro/tree-structure-ts/blob/5c909cf/src/Tree.ts#L27)
