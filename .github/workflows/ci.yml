@@ -1,12 +1,14 @@
-name: Publish package
+name: ci
+
 on:
-  release:
-    types: [created]
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
@@ -20,6 +22,16 @@ jobs:
       - run: pnpm install
       - name: Build
         run: pnpm run build
-      - run: pnpm publish
+      - name: Run tests
+        run: pnpm run test
+      - name: Bump version
+        run: pnpm run bump
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "ci(package-json): :bookmark: Bumped version"
+          commit_user_email: jdamaschke@visorian.com
+          branch: main
+      - name: Publish package
+        run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
