@@ -30,7 +30,7 @@ To create valid commit messages, you have to use conventional commits. For the t
 - style
 - test
 
-We recommend to use a tool like [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli) or [gacp](https://github.com/vivaxy/gacp) to make following these requirements easier.
+We recommend to use a tool like [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli) or [gacp](https://github.com/vivaxy/gacp) to make following these requirements easier. This repository includes a `.gacprc` config file for gacp.
 
 Note that `fix:` and `feat:` are for code changes. For typo or document changes, use `docs:` or `chore:` instead.
 

@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '!package.json'
 
 jobs:
   ci:
@@ -11,6 +13,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - uses: pnpm/action-setup@v2
         with:
           version: 7
