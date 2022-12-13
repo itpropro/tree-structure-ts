@@ -1,12 +1,23 @@
 {
   "name": "@itpropro/tree-structure-ts",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "type": "module",
   "packageManager": "pnpm@7.18.1",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "build": "tsc",
+    "build": "unbuild",
     "typecheck": "tsc --noEmit",
     "bump": "changelogen --bump",
     "publish": "pnpm publish",
@@ -22,6 +33,7 @@
     "typedoc": "^0.23.21",
     "typedoc-plugin-markdown": "^3.14.0",
     "typescript": "^4.9.3",
+    "unbuild": "^1.0.2",
     "vitest": "^0.25.5"
   }
 }

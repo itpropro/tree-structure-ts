@@ -2,15 +2,21 @@
 
 # @itpropro/tree-structure-ts
 
+![npm (scoped)](https://img.shields.io/npm/v/@itpropro/tree-structure-ts)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@itpropro/tree-structure-ts)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/itpropro/tree-structure-ts/publish)
+![Code Coverage](https://img.shields.io/badge/coverage->95%25-green)
+
 ## Introduction
 
 This module help interacting with `Tree` structures. It is optimized to work with big trees without causing overflows. Therefore it doesn't use recursion and the implementations for `preOrder` and `postOrder` traversals use `Promise.all` for concurrency to traverse multiple nodes at ones.
 It is fully typed and has over 95% test coverage.
 
-- Zero dependency
-- Fully typed
-- Fast
-- No recursion -> no memory overflows
+🚀 Zero dependency<br>
+🏷️ Fully typed<br>
+✨ Optimized for big trees<br>
+🚧 No recursion -> no memory overflows<br>
+🤏 Small bundle size<br>
 
 ## Installation
 
