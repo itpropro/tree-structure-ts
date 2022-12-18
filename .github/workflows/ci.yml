@@ -33,4 +33,4 @@ jobs:
           git config --global user.email "jdamaschke@visorian.com"
           git config --global user.name "Jan-Henrik Damaschke"
           pnpm run bump
-          git push
+          git push --tags
