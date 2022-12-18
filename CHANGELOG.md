@@ -2,6 +2,33 @@
 ## v0.5.5
 
 
+### 📖 Documentation
+
+  - **readme:** 📝  Fixed typo (427c960)
+
+### 🏡 Chore
+
+  - **release:** V0.5.2 (36ec2a7)
+  - **release:** V0.5.3 (2544f6f)
+  - **release:** V0.5.4 (889709c)
+  - **release:** V0.5.5 (cd57b06)
+
+### 🤖 CI
+
+  - **ci:** 💚  Updated workflows (c438277)
+  - **ci:** 💚  Updated workflow (d89204c)
+  - **ci:** 💚  Updated file filter (9f6efb2)
+  - **ci:** 💚  Updated release actions (8ce4481)
+  - **ci:** 💚  Updated secret reference (9e8c386)
+  - **ci:** 💚  Updated workflows (66c7730)
+
+### ❤️  Contributors
+
+- Jan-Henrik Damaschke <jdamaschke@visorian.com>
+
+## v0.5.5
+
+
 ### 🚀 Enhancements
 
   - **init:** 🎉   Initial commit (dc51266)
