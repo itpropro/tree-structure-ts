@@ -20,7 +20,6 @@
     "build": "unbuild",
     "typecheck": "tsc --noEmit",
     "bump": "changelogen --bump --release",
-    "publish": "pnpm publish",
     "docs": "typedoc --plugin typedoc-plugin-markdown --entryDocument README.md --readme README.md --out docs --githubPages false src/index.ts"
   },
   "devDependencies": {

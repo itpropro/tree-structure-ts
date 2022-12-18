@@ -6,6 +6,7 @@ on:
       - main
     paths-ignore:
       - 'package.json'
+      - 'CHANGELOG.md'
 
 jobs:
   ci:
@@ -33,7 +34,3 @@ jobs:
           git config --global user.name "Jan-Henrik Damaschke"
           pnpm run bump
           git push
-      - name: Publish package
-        run: pnpm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
