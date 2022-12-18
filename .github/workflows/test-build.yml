@@ -10,17 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 7
+
       - name: Set node version to 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: pnpm
+
       - run: pnpm install
+
       - name: Run typecheck
         run: pnpm run typecheck
+
       - name: Run tests
         run: pnpm run test
+        
