@@ -2,7 +2,7 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@itpropro/tree-structure-ts)](https://www.npmjs.com/package/@itpropro/tree-structure-ts)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@itpropro/tree-structure-ts)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/itpropro/tree-structure-ts/ci.yml?branch=main)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/itpropro/tree-structure-ts/release.yml?branch=main)
 ![Code Coverage](https://img.shields.io/badge/coverage->95%25-green)
 
 ## Introduction

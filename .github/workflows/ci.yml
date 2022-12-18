@@ -39,3 +39,19 @@ jobs:
         with:
           github_token: ${{ secrets.TREE_STRUCTURE_TS_PAT }}
           release_branches: main
+
+      - name: Update package.json
+        shell: pwsh
+        env:
+          TAG_NAME: ${{ steps.tag_version.outputs.new_tag }}
+        run: |
+          $env:RELEASE_VERSION = $env:TAG_NAME.replace('v', '')
+          $content = Get-Content .\package.json
+          $content = $content | foreach-object { $_ -replace '(?<prefix>^.+"version": ")(.+)(?<suffix>",)$', "`${prefix}$env:RELEASE_VERSION`${suffix}" } 
+          $content | foreach-object { [System.Text.RegularExpressions.Regex]::Unescape($_) } | Out-File .\package.json -Force -Encoding ascii
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "ci(package-json): :bookmark: Bumped package.json version to ${{ steps.tag_version.outputs.new_tag }}"
+          commit_user_email: jdamaschke@visorian.com
+          branch: main
