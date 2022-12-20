@@ -59,7 +59,6 @@ jobs:
 
       - name: Generate new tag version
         uses: mathieudutour/github-tag-action@v6.1
-        id: tag_version
         with:
           github_token: ${{ secrets.TREE_STRUCTURE_TS_PAT }}
           release_branches: main
