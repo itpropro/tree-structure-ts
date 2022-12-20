@@ -2,7 +2,7 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@itpropro/tree-structure-ts)](https://www.npmjs.com/package/@itpropro/tree-structure-ts)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@itpropro/tree-structure-ts)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/itpropro/tree-structure-ts/release.yml?branch=main)
+[![ci](https://github.com/itpropro/tree-structure-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/itpropro/tree-structure-ts/actions/workflows/ci.yml)
 ![Code Coverage](https://img.shields.io/badge/coverage->95%25-green)
 
 ## Introduction
@@ -16,12 +16,29 @@ It is fully typed and has over 95% test coverage.
 🚧 No recursion -> no memory overflows<br>
 🤏 Small bundle size<br>
 
-## Installation
+## Quick Start
+
+### Installation
 
 To install the module, run the following command:
 
 ```bash
+# pnpm
 pnpm install @itpropro/tree-structure-ts
+
+# npm
+npm install @itpropro/tree-structure-ts
+
+# yarn
+yarn add @itpropro/tree-structure-ts
+```
+
+### Import
+
+```typescript
+// ESM / TypeScript
+import { Tree } from '@itpropro/tree-structure-ts'
+import type { TreeNode } from '@itpropro/tree-structure-ts'
 ```
 
 ## Usage
