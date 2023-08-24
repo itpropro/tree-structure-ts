@@ -2,7 +2,7 @@
   "name": "@itpropro/tree-structure-ts",
   "version": "0.5.7",
   "type": "module",
-  "packageManager": "pnpm@7.18.1",
+  "packageManager": "pnpm@7.33.6",
   "homepage": "https://github.com/itpropro/tree-structure-ts#readme",
   "files": [
     "dist"
