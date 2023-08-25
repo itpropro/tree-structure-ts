@@ -30,7 +30,7 @@
     "@vitest/coverage-c8": "^0.25.8",
     "changelogen": "^0.4.0",
     "eslint": "^8.29.0",
-    "typedoc": "^0.23.21",
+    "typedoc": "^0.25.0",
     "typedoc-plugin-markdown": "^3.14.0",
     "typescript": "^5.0.0",
     "unbuild": "^1.0.2",
