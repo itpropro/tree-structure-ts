@@ -51,7 +51,7 @@ jobs:
           $content = $content | foreach-object { $_ -replace '(?<prefix>^.+"version": ")(.+)(?<suffix>",)$', "`${prefix}$env:RELEASE_VERSION`${suffix}" } 
           $content | foreach-object { [System.Text.RegularExpressions.Regex]::Unescape($_) } | Out-File .\package.json -Force -Encoding ascii
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "ci(package-json): :bookmark: Bumped package.json version to ${{ steps.tag_version.outputs.new_tag }}"
           commit_user_email: jdamaschke@visorian.com
