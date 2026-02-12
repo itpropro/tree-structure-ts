@@ -27,13 +27,13 @@
     "@antfu/eslint-config-ts": "^0.33.1",
     "@typescript-eslint/eslint-plugin": "^5.45.1",
     "@typescript-eslint/parser": "^5.45.1",
-    "@vitest/coverage-c8": "^0.25.8",
+    "@vitest/coverage-c8": "^0.33.0",
     "changelogen": "^0.4.0",
     "eslint": "^8.29.0",
     "typedoc": "^0.23.21",
     "typedoc-plugin-markdown": "^3.14.0",
     "typescript": "^5.0.0",
     "unbuild": "^1.0.2",
-    "vitest": "^0.25.5"
+    "vitest": "^0.34.0"
   }
 }
