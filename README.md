@@ -7,14 +7,15 @@
 
 ## Introduction
 
-This module helps interacting with `Tree` structures in TypeScript. It is optimized to work with big trees without causing overflows. Therefore it doesn't use recursion and the implementations for `preOrder` and `postOrder` traversals use `Promise.all` for concurrency to traverse multiple nodes at ones.
+This module helps interacting with `Tree` structures in TypeScript. It is optimized to work with big trees without causing overflows. Therefore it doesn't use recursion and the implementations for `preOrder` and `postOrder` traversals use `Promise.all` for concurrency to traverse multiple nodes at once.
+
 It is fully typed and has over 95% test coverage.
 
-🚀 Zero dependency<br>
-🏷️ Fully typed<br>
-✨ Optimized for big trees<br>
-🚧 No recursion -> no memory overflows<br>
-🤏 Small bundle size<br>
+- Zero dependency
+- Fully typed
+- Optimized for big trees
+- No recursion -> no memory overflows
+- Small bundle size
 
 ## Quick Start
 
@@ -23,8 +24,8 @@ It is fully typed and has over 95% test coverage.
 To install the module, run the following command:
 
 ```bash
-# pnpm
-pnpm install @itpropro/tree-structure-ts
+# bun
+bun add @itpropro/tree-structure-ts
 
 # npm
 npm install @itpropro/tree-structure-ts
@@ -50,20 +51,20 @@ const tree = new Tree('root')
 const root = tree.root
 ```
 
-To add a child node to a TreeNode, use the addChild method:
+To add a child node to a TreeNode, use the `addChild` method:
 
 ```typescript
 const child1 = root.addChild('child1')
 const child2 = root.addChild('child2')
 ```
 
-To get all nodes in the tree below a TreeNode, use the all method:
+To get all nodes in the tree below a TreeNode, use the `all` method:
 
 ```typescript
 const nodes = root.all()
 ```
 
-To traverse a tree, use the traverse method:
+To traverse a tree, use the `traverse` method:
 
 ```typescript
 root.traverse((node) => {
@@ -71,14 +72,14 @@ root.traverse((node) => {
 })
 ```
 
-You can specify the traversal order by passing one of the following values to the traverse method:
+You can specify the traversal order by passing one of the following values to the `traverse` method:
 
 - breadthFirst (the default): visits nodes in breadth-first order
 - depthFirst: visits nodes in depth-first order
 - preOrder: visits the current node, then traverses the left subtree, then traverses the right subtree
 - postOrder: traverses the left subtree, then traverses the right subtree, then visits the current node
 
-for all avalaible methods and fields, please read the detailed documentation of the `Tree` and `TreeNode` class: [Class docs](https://github.com/itpropro/tree-structure-ts/blob/main/docs/modules.md).
+For all available methods and fields, please read the detailed documentation of the `Tree` and `TreeNode` classes: [Class docs](https://github.com/itpropro/tree-structure-ts/blob/main/docs/modules.md).
 
 ## Contribution
 
@@ -88,4 +89,4 @@ See [Contributing Guide](https://github.com/itpropro/tree-structure-ts/blob/main
 
 Made with :heart:
 
-Published under [MIT License](./LICENCE).
+Published under [MIT License](./LICENSE).

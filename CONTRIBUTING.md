@@ -5,8 +5,9 @@ Thanks for your interest in contributing, all contributions are welcome and this
 ## Local setup
 
 - Clone this repository
-- Make sure you have PNPM and Node16+ installed. We recommend using VSCode.
+- Make sure you have Bun 1.3+ installed. We recommend using VSCode.
 - Check out a new branch for your contribution (`git checkout -b 'feature/fantastic-new-function'`)
+- The root `README.md` is generated. Update `scripts/generate-readme.mjs` and run `bun run readme:generate`.
 
 ## Commit convention
 
@@ -38,6 +39,6 @@ Note that `fix:` and `feat:` are for code changes. For typo or document changes,
 
 If you finished your change, you can create a pull request (PR) to get them merged. If you are not familiar with the process, GitHub has a [guide on PRs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
 
-:warning: **Before creatign a PR, please make sure that you added tests for new features if you added some and that no tests are failing (`pnpm run test`).**
+:warning: **Before creatign a PR, please make sure that you added tests for new features if you added some and that no tests are failing (`bun run test`).**
 
 If you are closing issues with a PR, please reference the issues in the PR description (`fix/fixes #123` where 123 is the issue id).
