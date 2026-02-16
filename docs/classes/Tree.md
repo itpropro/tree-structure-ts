@@ -1,102 +1,93 @@
-[@itpropro/tree-structure-ts](../README.md) / [Exports](../modules.md) / Tree
+[**@itpropro/tree-structure-ts**](../README.md)
 
-# Class: Tree<T\>
+***
+
+[@itpropro/tree-structure-ts](../globals.md) / Tree
+
+# Class: Tree\<T\>
+
+Defined in: [Tree.ts:6](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/Tree.ts#L6)
 
 Represents a tree data structure.
 
-## Type parameters
+## Type Parameters
 
-| Name |
-| :------ |
-| `T` |
+### T
 
-## Table of contents
-
-### Constructors
-
-- [constructor](Tree.md#constructor)
-
-### Properties
-
-- [root](Tree.md#root)
-
-### Methods
-
-- [all](Tree.md#all)
-- [traverse](Tree.md#traverse)
+`T`
 
 ## Constructors
 
-### constructor
+### Constructor
 
-• **new Tree**<`T`\>(`value`)
+> **new Tree**\<`T`\>(`value`): `Tree`\<`T`\>
+
+Defined in: [Tree.ts:16](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/Tree.ts#L16)
 
 Creates a new `Tree` instance.
 
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `T` | The value to initialize the root node with. |
+##### value
 
-#### Defined in
+`T`
 
-[Tree.ts:16](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/Tree.ts#L16)
+The value to initialize the root node with.
+
+#### Returns
+
+`Tree`\<`T`\>
 
 ## Properties
 
 ### root
 
-• **root**: ``null`` \| [`TreeNode`](TreeNode.md)<`T`\>
+> **root**: [`TreeNode`](TreeNode.md)\<`T`\> \| `null`
+
+Defined in: [Tree.ts:10](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/Tree.ts#L10)
 
 The root node of the tree.
 
-#### Defined in
-
-[Tree.ts:10](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/Tree.ts#L10)
-
 ## Methods
 
-### all
+### all()
 
-▸ **all**(): [`TreeNode`](TreeNode.md)<`T`\>[]
+> **all**(): [`TreeNode`](TreeNode.md)\<`T`\>[]
+
+Defined in: [Tree.ts:38](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/Tree.ts#L38)
 
 Returns all the nodes of the tree in an array.
 
 #### Returns
 
-[`TreeNode`](TreeNode.md)<`T`\>[]
+[`TreeNode`](TreeNode.md)\<`T`\>[]
 
-#### Defined in
+***
 
-[Tree.ts:70](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/Tree.ts#L70)
+### traverse()
 
-___
+> **traverse**(`callback`, `traversal`): `void`
 
-### traverse
-
-▸ **traverse**(`callback`, `traversal`): `undefined` \| `Promise`<`void`[]\>
+Defined in: [Tree.ts:27](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/Tree.ts#L27)
 
 Traverses the tree using the specified traversal method,
 calling the provided callback function on each visited node.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `callback` | (`node`: [`TreeNode`](TreeNode.md)<`T`\>) => `void` | A function to call on each visited node. |
-| `traversal` | ``"breadthFirst"`` \| ``"depthFirst"`` \| ``"preOrder"`` \| ``"postOrder"`` | The traversal method to use. Can be one of: 'breadthFirst', 'depthFirst', 'preOrder', 'postOrder'. |
+##### callback
+
+(`node`) => `void`
+
+A function to call on each visited node.
+
+##### traversal
+
+The traversal method to use. Can be one of:
+'breadthFirst', 'depthFirst', 'preOrder', 'postOrder'.
+
+`"breadthFirst"` | `"depthFirst"` | `"preOrder"` | `"postOrder"`
 
 #### Returns
 
-`undefined` \| `Promise`<`void`[]\>
-
-#### Defined in
-
-[Tree.ts:27](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/Tree.ts#L27)
+`void`

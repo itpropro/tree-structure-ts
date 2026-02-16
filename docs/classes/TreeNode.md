@@ -1,164 +1,154 @@
-[@itpropro/tree-structure-ts](../README.md) / [Exports](../modules.md) / TreeNode
+[**@itpropro/tree-structure-ts**](../README.md)
 
-# Class: TreeNode<T\>
+***
+
+[@itpropro/tree-structure-ts](../globals.md) / TreeNode
+
+# Class: TreeNode\<T\>
+
+Defined in: [TreeNode.ts:4](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L4)
 
 Represents a node in a tree structure.
 
-## Type parameters
+## Type Parameters
 
-| Name |
-| :------ |
-| `T` |
+### T
 
-## Table of contents
-
-### Constructors
-
-- [constructor](TreeNode.md#constructor)
-
-### Properties
-
-- [children](TreeNode.md#children)
-- [parent](TreeNode.md#parent)
-- [value](TreeNode.md#value)
-
-### Methods
-
-- [addChild](TreeNode.md#addchild)
-- [all](TreeNode.md#all)
-- [getPath](TreeNode.md#getpath)
-- [hasChildren](TreeNode.md#haschildren)
-- [hasSiblings](TreeNode.md#hassiblings)
-- [isRoot](TreeNode.md#isroot)
-- [remove](TreeNode.md#remove)
-- [traverse](TreeNode.md#traverse)
+`T`
 
 ## Constructors
 
-### constructor
+### Constructor
 
-• **new TreeNode**<`T`\>(`value`, `parent?`)
+> **new TreeNode**\<`T`\>(`value`, `parent?`): `TreeNode`\<`T`\>
+
+Defined in: [TreeNode.ts:33](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L33)
 
 Creates a new TreeNode instance.
 
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `value` | `T` | `undefined` | The value of the node. |
-| `parent` | ``null`` \| [`TreeNode`](TreeNode.md)<`T`\> | `null` | The parent of the node. |
+##### value
 
-#### Defined in
-
-[TreeNode.ts:25](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L25)
-
-## Properties
-
-### children
-
-• **children**: [`TreeNode`](TreeNode.md)<`T`\>[]
-
-The children of the node.
-
-#### Defined in
-
-[TreeNode.ts:13](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L13)
-
-___
-
-### parent
-
-• **parent**: ``null`` \| [`TreeNode`](TreeNode.md)<`T`\>
-
-The parent of the node.
-
-#### Defined in
-
-[TreeNode.ts:18](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L18)
-
-___
-
-### value
-
-• **value**: `T`
+`T`
 
 The value of the node.
 
-#### Defined in
+##### parent?
 
-[TreeNode.ts:8](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L8)
+The parent of the node.
+
+`TreeNode`\<`T`\> | `null`
+
+#### Returns
+
+`TreeNode`\<`T`\>
+
+## Properties
+
+### value
+
+> **value**: `T`
+
+Defined in: [TreeNode.ts:8](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L8)
+
+The value of the node.
+
+## Accessors
+
+### children
+
+#### Get Signature
+
+> **get** **children**(): readonly `TreeNode`\<`T`\>[]
+
+Defined in: [TreeNode.ts:17](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L17)
+
+The children of the node.
+
+##### Returns
+
+readonly `TreeNode`\<`T`\>[]
+
+***
+
+### parent
+
+#### Get Signature
+
+> **get** **parent**(): `TreeNode`\<`T`\> \| `null`
+
+Defined in: [TreeNode.ts:24](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L24)
+
+The parent of the node.
+
+##### Returns
+
+`TreeNode`\<`T`\> \| `null`
 
 ## Methods
 
-### addChild
+### addChild()
 
-▸ **addChild**(`value`): [`TreeNode`](TreeNode.md)<`T`\>
+> **addChild**(`value`): `TreeNode`\<`T`\>
+
+Defined in: [TreeNode.ts:44](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L44)
 
 Adds a child node to the current node.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value` | `T` | The value of the child node. |
+##### value
+
+`T`
+
+The value of the child node.
 
 #### Returns
 
-[`TreeNode`](TreeNode.md)<`T`\>
+`TreeNode`\<`T`\>
 
 The new child node.
 
-#### Defined in
+***
 
-[TreeNode.ts:36](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L36)
+### all()
 
-___
+> **all**(): `TreeNode`\<`T`\>[]
 
-### all
-
-▸ **all**(): [`TreeNode`](TreeNode.md)<`T`\>[]
+Defined in: [TreeNode.ts:54](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L54)
 
 Gets all nodes in the tree below the current node.
 
 #### Returns
 
-[`TreeNode`](TreeNode.md)<`T`\>[]
+`TreeNode`\<`T`\>[]
 
 An array of TreeNode instances.
 
-#### Defined in
+***
 
-[TreeNode.ts:46](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L46)
+### getPath()
 
-___
+> **getPath**(): `TreeNode`\<`T`\>[]
 
-### getPath
-
-▸ **getPath**(): [`TreeNode`](TreeNode.md)<`T`\>[]
+Defined in: [TreeNode.ts:78](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L78)
 
 Gets the path from the root node to the current node.
 
 #### Returns
 
-[`TreeNode`](TreeNode.md)<`T`\>[]
+`TreeNode`\<`T`\>[]
 
 An array of TreeNode instances.
 
-#### Defined in
+***
 
-[TreeNode.ts:59](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L59)
+### hasChildren()
 
-___
+> **hasChildren**(): `boolean`
 
-### hasChildren
-
-▸ **hasChildren**(): `boolean`
+Defined in: [TreeNode.ts:93](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L93)
 
 Checks if the current node has any child nodes.
 
@@ -168,15 +158,13 @@ Checks if the current node has any child nodes.
 
 `true` if the node has children, `false` otherwise.
 
-#### Defined in
+***
 
-[TreeNode.ts:75](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L75)
+### hasSiblings()
 
-___
+> **hasSiblings**(): `boolean`
 
-### hasSiblings
-
-▸ **hasSiblings**(): `boolean`
+Defined in: [TreeNode.ts:101](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L101)
 
 Checks if the current node has any siblings.
 
@@ -186,15 +174,13 @@ Checks if the current node has any siblings.
 
 `true` if the node has siblings, `false` otherwise.
 
-#### Defined in
+***
 
-[TreeNode.ts:83](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L83)
+### isRoot()
 
-___
+> **isRoot**(): `boolean`
 
-### isRoot
-
-▸ **isRoot**(): `boolean`
+Defined in: [TreeNode.ts:109](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L109)
 
 Checks if the current node is the root node.
 
@@ -204,47 +190,46 @@ Checks if the current node is the root node.
 
 `true` if the node is the root node, `false` otherwise.
 
-#### Defined in
+***
 
-[TreeNode.ts:91](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L91)
+### remove()
 
-___
+> **remove**(): `TreeNode`\<`T`\> \| `null`
 
-### remove
-
-▸ **remove**(): ``null`` \| [`TreeNode`](TreeNode.md)<`T`\>
+Defined in: [TreeNode.ts:117](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L117)
 
 Removes the current node from the tree.
 
 #### Returns
 
-``null`` \| [`TreeNode`](TreeNode.md)<`T`\>
+`TreeNode`\<`T`\> \| `null`
 
 The new current node after removing the current node.
 
-#### Defined in
+***
 
-[TreeNode.ts:99](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L99)
+### traverse()
 
-___
+> **traverse**(`callback`, `traversal`): `void`
 
-### traverse
-
-▸ **traverse**(`callback`, `traversal`): `void`
+Defined in: [TreeNode.ts:134](https://github.com/itpropro/tree-structure-ts/blob/4483285b189e8de68bbdf3da155711dff9ccb8ed/src/TreeNode.ts#L134)
 
 Traverses the tree starting from the current node.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `callback` | (`node`: [`TreeNode`](TreeNode.md)<`T`\>) => `void` | A function to be called for each visited node. |
-| `traversal` | ``"breadthFirst"`` \| ``"depthFirst"`` \| ``"preOrder"`` \| ``"postOrder"`` | `true` to traverse the tree in depth-first order, `false` for breadth-first order. |
+##### callback
+
+(`node`) => `void`
+
+A function to be called for each visited node.
+
+##### traversal
+
+`true` to traverse the tree in depth-first order, `false` for breadth-first order.
+
+`"breadthFirst"` | `"depthFirst"` | `"preOrder"` | `"postOrder"`
 
 #### Returns
 
 `void`
-
-#### Defined in
-
-[TreeNode.ts:119](https://github.com/itpropro/tree-structure-ts/blob/9f6efb2/src/TreeNode.ts#L119)

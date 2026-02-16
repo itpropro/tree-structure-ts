@@ -1,127 +1,130 @@
-import { describe, expect, it } from 'vitest'
-import type { TreeNode } from '../src/TreeNode'
-import { Tree } from '../src/Tree'
+import { describe, expect, it } from "vitest";
+import { Tree } from "../src/Tree";
 
-describe('treeClass', () => {
-  describe('class', () => {
-    it('should be defined', () => {
-      expect(Tree).toBeDefined()
-    })
+describe("treeClass", () => {
+  describe("Tree", () => {
+    const buildDeepTree = (depth: number) => {
+      const tree = new Tree(0);
+      let current = tree.root!;
 
-    it('should instantiate', () => {
-      const tree = new Tree('test')
-      expect(tree).toBeDefined()
-    })
-  })
+      for (let i = 1; i <= depth; i++) {
+        current = current.addChild(i);
+      }
 
-  describe('Tree', () => {
-    it('can have different node types', () => {
-      const stringTree = new Tree('root')
-      expect(stringTree.root?.value).toBe('root')
-      expect(stringTree.root?.value).toBeTypeOf('string')
+      return { tree, deepest: current };
+    };
 
-      const numberTree = new Tree(1)
-      expect(numberTree.root?.value).toBe(1)
-      expect(numberTree.root?.value).toBeTypeOf('number')
+    const buildBranchingTree = () => {
+      const tree = new Tree("root");
+      const root = tree.root!;
+      const nodeA = root.addChild("a");
+      const nodeB = root.addChild("b");
+      const nodeC = nodeA.addChild("c");
+      const nodeD = nodeA.addChild("d");
+      const nodeE = nodeB.addChild("e");
+      return { tree, nodeA, nodeB, nodeC, nodeD, nodeE };
+    };
 
-      const objectTree = new Tree({ test: 1 })
-      expect(objectTree.root?.value).toStrictEqual({ test: 1 })
-      expect(objectTree.root?.value).toBeTypeOf('object')
-    })
+    it("can have different node types", () => {
+      const stringTree = new Tree("root");
+      expect(stringTree.root!.value).toBe("root");
+      expect(stringTree.root!.value).toBeTypeOf("string");
 
-    it('traverse breadthFirst', () => {
-      const tree = new Tree('root')
-      const root = tree.root
-      const nodeA = root?.addChild('a')
-      const nodeB = nodeA?.addChild('b')
-      nodeB?.addChild('c')
-      const nodes: String[][] = []
-      tree.traverse((node) => {
-        const path = node.getPath()
-        const values = path.map(elem => elem.value)
-        nodes.push(values)
-      }, 'breadthFirst')
-      expect(nodes.length).toBe(4)
-      expect(nodes[0]).toStrictEqual(['root'])
-      expect(nodes[1]).toStrictEqual(['root', 'a'])
-      expect(nodes[2]).toStrictEqual(['root', 'a', 'b'])
-      expect(nodes[3]).toStrictEqual(['root', 'a', 'b', 'c'])
-    })
+      const numberTree = new Tree(1);
+      expect(numberTree.root!.value).toBe(1);
+      expect(numberTree.root!.value).toBeTypeOf("number");
 
-    it('traverse depthFirst', () => {
-      const tree = new Tree('root')
-      const root = tree.root
-      const nodeA = root?.addChild('a')
-      const nodeB = nodeA?.addChild('b')
-      nodeB?.addChild('c')
-      const nodes: String[][] = []
-      tree.traverse((node) => {
-        const path = node.getPath()
-        const values = path.map(elem => elem.value)
-        nodes.push(values)
-      }, 'depthFirst')
-      expect(nodes.length).toBe(4)
-      expect(nodes[0]).toStrictEqual(['root'])
-      expect(nodes[1]).toStrictEqual(['root', 'a'])
-      expect(nodes[2]).toStrictEqual(['root', 'a', 'b'])
-      expect(nodes[3]).toStrictEqual(['root', 'a', 'b', 'c'])
-    })
+      const objectTree = new Tree({ test: 1 });
+      expect(objectTree.root!.value).toStrictEqual({ test: 1 });
+      expect(objectTree.root!.value).toBeTypeOf("object");
+    });
 
-    it('traverse postOrder', () => {
-      const tree = new Tree('root')
-      const root = tree.root
-      const nodeA = root?.addChild('a')
-      const nodeB = nodeA?.addChild('b')
-      nodeB?.addChild('c')
-      const nodes: String[][] = []
-      tree.traverse((node) => {
-        const path = node.getPath()
-        const values = path.map(elem => elem.value)
-        nodes.push(values)
-      }, 'postOrder')
-      expect(nodes.length).toBe(4)
-      expect(nodes[3]).toStrictEqual(['root'])
-      expect(nodes[2]).toStrictEqual(['root', 'a'])
-      expect(nodes[1]).toStrictEqual(['root', 'a', 'b'])
-      expect(nodes[0]).toStrictEqual(['root', 'a', 'b', 'c'])
-    })
+    it("traverses a branching tree in expected order for each mode", () => {
+      const { tree } = buildBranchingTree();
 
-    it('traverse preOrder', () => {
-      const tree = new Tree('root')
-      const root = tree.root
-      const nodeA = root?.addChild('a')
-      const nodeB = nodeA?.addChild('b')
-      nodeB?.addChild('c')
-      const nodes: String[][] = []
-      tree.traverse((node) => {
-        const path = node.getPath()
-        const values = path.map(elem => elem.value)
-        nodes.push(values)
-      }, 'preOrder')
-      expect(nodes.length).toBe(4)
-      expect(nodes[0]).toStrictEqual(['root'])
-      expect(nodes[1]).toStrictEqual(['root', 'a'])
-      expect(nodes[2]).toStrictEqual(['root', 'a', 'b'])
-      expect(nodes[3]).toStrictEqual(['root', 'a', 'b', 'c'])
-    })
+      const expectedOrder: Record<"breadthFirst" | "depthFirst" | "preOrder" | "postOrder", string[]> = {
+        breadthFirst: ["root", "a", "b", "c", "d", "e"],
+        depthFirst: ["root", "a", "c", "d", "b", "e"],
+        preOrder: ["root", "a", "c", "d", "b", "e"],
+        postOrder: ["c", "d", "a", "e", "b", "root"],
+      };
 
-    it('all', () => {
-      const tree = new Tree('root')
-      const root = tree.root
-      const nodeA = root?.addChild('a')
-      const nodeB = root?.addChild('b')
-      const nodeC = nodeB?.addChild('c')
-      const nodeD = nodeC?.addChild('d')
-      const nodeE = nodeC?.addChild('e')
-      const nodeF = nodeD?.addChild('f')
-      const all = tree.all()
+      const modes: Array<keyof typeof expectedOrder> = ["breadthFirst", "depthFirst", "preOrder", "postOrder"];
 
-      expect(all.includes(nodeA as TreeNode<string>)).toBeTruthy()
-      expect(all.includes(nodeB as TreeNode<string>)).toBeTruthy()
-      expect(all.includes(nodeC as TreeNode<string>)).toBeTruthy()
-      expect(all.includes(nodeD as TreeNode<string>)).toBeTruthy()
-      expect(all.includes(nodeE as TreeNode<string>)).toBeTruthy()
-      expect(all.includes(nodeF as TreeNode<string>)).toBeTruthy()
-    })
-  })
-})
+      for (const mode of modes) {
+        const visited: string[] = [];
+        tree.traverse((node) => {
+          visited.push(node.value);
+        }, mode);
+        expect(visited).toStrictEqual(expectedOrder[mode]);
+      }
+    });
+
+    it("throws on unknown traversal mode", () => {
+      const tree = new Tree("root");
+      const traverse: unknown = Reflect.get(tree, "traverse");
+
+      if (typeof traverse !== "function") {
+        throw new TypeError("Tree.traverse must be a function");
+      }
+
+      expect(() => {
+        Reflect.apply(traverse, tree, [() => {}, "invalid"]);
+      }).toThrow();
+    });
+
+    it("all", () => {
+      const { tree, nodeA, nodeB, nodeC, nodeD, nodeE } = buildBranchingTree();
+      const all = tree.all();
+
+      expect(all.includes(nodeA)).toBeTruthy();
+      expect(all.includes(nodeB)).toBeTruthy();
+      expect(all.includes(nodeC)).toBeTruthy();
+      expect(all.includes(nodeD)).toBeTruthy();
+      expect(all.includes(nodeE)).toBeTruthy();
+      expect(all.length).toBe(5);
+    });
+
+    it("handles null root safely", () => {
+      const tree = new Tree("root");
+      tree.root = null;
+
+      expect(tree.all()).toStrictEqual([]);
+      expect(() => {
+        tree.traverse(() => {
+          throw new Error("callback should not run when root is null");
+        }, "breadthFirst");
+      }).not.toThrow();
+    });
+
+    it("traverses very deep trees in preOrder", () => {
+      const depth = 15000;
+      const { tree } = buildDeepTree(depth);
+      const visited: number[] = [];
+
+      expect(() => {
+        tree.traverse((node) => {
+          visited.push(node.value);
+        }, "preOrder");
+      }).not.toThrow();
+
+      expect(visited.length).toBe(depth + 1);
+      expect(visited[0]).toBe(0);
+      expect(visited.at(-1)).toBe(depth);
+    });
+
+    it("returns all descendants for very deep trees", () => {
+      const depth = 15000;
+      const { tree } = buildDeepTree(depth);
+      let descendants = tree.all();
+
+      expect(() => {
+        descendants = tree.all();
+      }).not.toThrow();
+
+      expect(descendants.length).toBe(depth);
+      expect(descendants[0].value).toBe(1);
+      expect(descendants.at(-1)?.value).toBe(depth);
+    });
+  });
+});

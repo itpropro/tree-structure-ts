@@ -5,17 +5,25 @@ export class TreeNode<T> {
   /**
    * The value of the node.
    */
-  value: T
+  value: T;
+
+  #children: TreeNode<T>[];
+
+  #parent: TreeNode<T> | null;
 
   /**
    * The children of the node.
    */
-  children: TreeNode<T>[]
+  get children(): readonly TreeNode<T>[] {
+    return [...this.#children];
+  }
 
   /**
    * The parent of the node.
    */
-  parent: TreeNode<T> | null
+  get parent(): TreeNode<T> | null {
+    return this.#parent;
+  }
 
   /**
    * Creates a new TreeNode instance.
@@ -23,9 +31,9 @@ export class TreeNode<T> {
    * @param parent The parent of the node.
    */
   constructor(value: T, parent: TreeNode<T> | null = null) {
-    this.value = value
-    this.children = []
-    this.parent = parent
+    this.value = value;
+    this.#children = [];
+    this.#parent = parent;
   }
 
   /**
@@ -34,9 +42,9 @@ export class TreeNode<T> {
    * @returns The new child node.
    */
   addChild(value: T): TreeNode<T> {
-    const newNode = new TreeNode(value, this)
-    this.children.push(newNode)
-    return newNode
+    const newNode = new TreeNode(value, this);
+    this.#children.push(newNode);
+    return newNode;
   }
 
   /**
@@ -44,12 +52,23 @@ export class TreeNode<T> {
    * @returns An array of TreeNode instances.
    */
   all(): TreeNode<T>[] {
-    const nodes: TreeNode<T>[] = []
-    for (const value of this.children) {
-      nodes.push(value)
-      value.children && nodes.push(...value.all())
+    const nodes: TreeNode<T>[] = [];
+    const stack: TreeNode<T>[] = [];
+
+    for (let i = this.#children.length - 1; i >= 0; i--) {
+      stack.push(this.#children[i]);
     }
-    return nodes
+
+    while (stack.length > 0) {
+      const current = stack.pop()!;
+      nodes.push(current);
+
+      for (let i = current.#children.length - 1; i >= 0; i--) {
+        stack.push(current.#children[i]);
+      }
+    }
+
+    return nodes;
   }
 
   /**
@@ -57,15 +76,14 @@ export class TreeNode<T> {
    * @returns An array of TreeNode instances.
    */
   getPath(): TreeNode<T>[] {
-    const path: TreeNode<T>[] = []
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    let currentNode: TreeNode<T> | null = this
-    while (currentNode !== null) {
-      path.push(currentNode)
-      currentNode = currentNode.parent
+    const path: TreeNode<T>[] = [this];
+
+    while (path[path.length - 1].#parent !== null) {
+      path.push(path[path.length - 1].#parent!);
     }
 
-    return path.reverse()
+    path.reverse();
+    return path;
   }
 
   /**
@@ -73,7 +91,7 @@ export class TreeNode<T> {
    * @returns `true` if the node has children, `false` otherwise.
    */
   hasChildren(): boolean {
-    return this.children.length > 0
+    return this.#children.length > 0;
   }
 
   /**
@@ -81,7 +99,7 @@ export class TreeNode<T> {
    * @returns `true` if the node has siblings, `false` otherwise.
    */
   hasSiblings(): boolean {
-    return this.parent !== null && this.parent.children.length > 1
+    return this.#parent !== null && this.#parent.#children.length > 1;
   }
 
   /**
@@ -89,7 +107,7 @@ export class TreeNode<T> {
    * @returns `true` if the node is the root node, `false` otherwise.
    */
   isRoot(): boolean {
-    return this.parent === null || this.parent === undefined
+    return this.#parent === null;
   }
 
   /**
@@ -97,18 +115,15 @@ export class TreeNode<T> {
    * @returns The new current node after removing the current node.
    */
   remove(): TreeNode<T> | null {
-    if (this.parent) {
-      const parent = this.parent
-      const index = parent.children.indexOf(this)
-      if (index >= 0)
-        parent.children.splice(index, 1)
+    if (this.#parent) {
+      const parent = this.#parent;
+      parent.#children = parent.#children.filter((child) => child !== this);
 
-      this.parent = null
-      return parent
+      this.#parent = null;
+      return parent;
     }
-    else {
-      return null
-    }
+
+    return null;
   }
 
   /**
@@ -116,43 +131,67 @@ export class TreeNode<T> {
    * @param callback A function to be called for each visited node.
    * @param traversal `true` to traverse the tree in depth-first order, `false` for breadth-first order.
    */
-  traverse(callback: (node: TreeNode<T>) => void, traversal: 'breadthFirst' | 'depthFirst' | 'preOrder' | 'postOrder') {
-    if (!this)
-      return
+  traverse(
+    callback: (node: TreeNode<T>) => void,
+    traversal: "breadthFirst" | "depthFirst" | "preOrder" | "postOrder",
+  ) {
+    switch (traversal) {
+      case "postOrder": {
+        const stack: Array<{ node: TreeNode<T>; visited: boolean }> = [{ node: this, visited: false }];
 
-    if (traversal === 'preOrder') {
-      // Pre-order traversal: visit the current node, then traverse the left subtree, then traverse the right subtree
-      callback(this)
-      this.children.forEach(child => child.traverse(callback, traversal))
-      return
-    }
+        while (stack.length > 0) {
+          const current = stack.pop()!;
 
-    if (traversal === 'postOrder') {
-      // Post-order traversal: traverse the left subtree, then traverse the right subtree, then visit the current node
-      this.children.forEach(child => child.traverse(callback, traversal))
-      callback(this)
-      return
-    }
+          if (current.visited) {
+            callback(current.node);
+            continue;
+          }
 
-    const collection: TreeNode<T>[] = []
-    collection.push(this)
+          stack.push({ node: current.node, visited: true });
 
-    while (collection.length > 0) {
-      let current: TreeNode<T>
-      if (traversal === 'depthFirst')
-        current = collection.pop()!
-      else
-        current = collection.shift()!
+          for (let i = current.node.#children.length - 1; i >= 0; i--) {
+            stack.push({ node: current.node.#children[i], visited: false });
+          }
+        }
 
-      callback(current)
-      if (traversal === 'depthFirst') {
-        for (let i = current.children.length - 1; i >= 0; i--)
-          collection.push(current.children[i])
+        return;
       }
-      else {
-        for (const child of current.children)
-          collection.push(child)
+
+      case "breadthFirst": {
+        const queue: TreeNode<T>[] = [this];
+        let index = 0;
+
+        while (index < queue.length) {
+          const current = queue[index];
+          index += 1;
+          callback(current);
+
+          for (const child of current.#children) {
+            queue.push(child);
+          }
+        }
+
+        return;
       }
+
+      case "depthFirst":
+      case "preOrder": {
+        const stack: TreeNode<T>[] = [this];
+
+        while (stack.length > 0) {
+          const current = stack.pop()!;
+          callback(current);
+
+          for (let i = current.#children.length - 1; i >= 0; i--) {
+            stack.push(current.#children[i]);
+          }
+        }
+
+        return;
+      }
+
+      default:
+        throw new Error(`Unknown traversal mode: ${String(traversal)}`);
     }
   }
 }

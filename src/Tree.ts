@@ -1,4 +1,4 @@
-import { TreeNode } from './TreeNode.js'
+import { TreeNode } from "./TreeNode.js";
 
 /**
  * Represents a tree data structure.
@@ -7,14 +7,14 @@ export class Tree<T> {
   /**
    * The root node of the tree.
    */
-  root: TreeNode<T> | null
+  root: TreeNode<T> | null;
 
   /**
    * Creates a new `Tree` instance.
    * @param value The value to initialize the root node with.
    */
   constructor(value: T) {
-    this.root = new TreeNode(value)
+    this.root = new TreeNode(value);
   }
 
   /**
@@ -24,57 +24,19 @@ export class Tree<T> {
    * @param traversal The traversal method to use. Can be one of:
    * 'breadthFirst', 'depthFirst', 'preOrder', 'postOrder'.
    */
-  traverse(callback: (node: TreeNode<T>) => void, traversal: 'breadthFirst' | 'depthFirst' | 'preOrder' | 'postOrder') {
-    if (!this.root)
-      return
-
-    if (traversal === 'preOrder') {
-      // Pre-order traversal: visit the current node, then traverse the left subtree, then traverse the right subtree
-      callback(this.root)
-      return Promise.all(this.root.children.map(child => child.traverse(callback, traversal)))
-    }
-
-    if (traversal === 'postOrder') {
-      // Post-order traversal: traverse the left subtree, then traverse the right subtree, then visit the current node
-      Promise.all(this.root.children.map(child => child.traverse(callback, traversal)))
-      callback(this.root)
-      return
-    }
-
-    const collection: TreeNode<T>[] = []
-    collection.push(this.root)
-
-    while (collection.length > 0) {
-      let current: TreeNode<T>
-      if (traversal === 'depthFirst')
-        current = collection.pop()!
-
-      else
-        current = collection.shift()!
-
-      callback(current)
-      if (traversal === 'depthFirst') {
-        for (let i = current.children.length - 1; i >= 0; i--)
-          collection.push(current.children[i])
-      }
-      else {
-        for (const child of current.children)
-          collection.push(child)
-      }
-    }
+  traverse(
+    callback: (node: TreeNode<T>) => void,
+    traversal: "breadthFirst" | "depthFirst" | "preOrder" | "postOrder",
+  ) {
+    if (!this.root) return;
+    this.root.traverse(callback, traversal);
   }
 
   /**
    * Returns all the nodes of the tree in an array.
    */
   all(): TreeNode<T>[] {
-    const nodes: TreeNode<T>[] = []
-    if (this.root) {
-      for (const value of this.root.children) {
-        nodes.push(value)
-        value.children && nodes.push(...value.all())
-      }
-    }
-    return nodes
+    if (!this.root) return [];
+    return this.root.all();
   }
 }
