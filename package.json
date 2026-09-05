@@ -2,7 +2,7 @@
   "name": "@itpropro/tree-structure-ts",
   "version": "0.5.8",
   "type": "module",
-  "packageManager": "bun@1.3.9",
+  "packageManager": "bun@1.4.2",
   "homepage": "https://github.com/itpropro/tree-structure-ts#readme",
   "files": [
     "dist"
