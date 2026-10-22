@@ -37,7 +37,7 @@
     "mdbox": "^0.1.1",
     "oxfmt": "^0.32.0",
     "oxlint": "^1.47.0",
-    "oxlint-tsgolint": "^0.13.0",
+    "oxlint-tsgolint": "^7.0.0",
     "tinybench": "^6.0.0",
     "typedoc": "^0.28.17",
     "typedoc-plugin-markdown": "^4.10.0",
